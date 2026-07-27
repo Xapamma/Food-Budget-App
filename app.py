@@ -14,5 +14,15 @@ app = Flask(__name__)
 def home():
     return "<h1>Budget Price App</h1>"
 
+@app.route('/about')
+def about():
+    return "<h1>About This App</h1><p>This app helps compare grocery prices.</p>"
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
