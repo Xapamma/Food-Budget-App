@@ -6,19 +6,25 @@ access the food database. It will calculate the cost per meal based on serving s
 
 '''
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "<h1>Budget Price App</h1>"
+    return render_template('index.html')
 
 @app.route('/about')
 def about():
-    return "<h1>About This App</h1><p>This app helps compare grocery prices.</p>"
+    return render_template('about.html')
 
+@app.route('/products')
+def products():
+    return render_template('products.html')
 
+@app.route('/stores')
+def stores():
+    return render_template('stores.html')
 
 
 
