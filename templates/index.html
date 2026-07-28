@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <title> Budget Price App</title>
 
         <link rel="stylesheet"
-                href=""{{url_for('static', filename='css/style.css') }}">
+                href="{{url_for('static', filename='css/style.css') }}">
     </head>
     
     <body>
@@ -52,4 +52,54 @@
         {% endif %}
 
     </body>
-</html>
+</html> -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Home</h2>
+
+<p>Welcome to the Budget Price App!</p>
+
+<form method="POST">
+    <label>Product Name</label><br>
+    <input type="text"
+            name="product_name"
+            value="{{product_name or ''}}">
+    
+    <br><br>
+
+    <label>Price ($)</label><br>
+    <input type="number" 
+    name="price" step="0.01" value="{{price or ''}}">
+
+    <br><br>
+
+    <label>Calories</label><br>
+    <input type="number" 
+    name="calories" 
+    value="{{calories or ''}}">
+
+    <br><br>
+
+    <label>Protein (g)</label><br>
+    <input type="number" 
+            name="protein" 
+            step="0.1" 
+            value="{{protein or ''}}">
+
+    <br><br>
+
+    <button>Calculate</button>
+</form>
+
+{% if protein_per_dollar%}
+
+<hr>
+    <h2>Results</h2>
+    <p>Price per calorie: ${{ "%0.2f" | format(calorie_per_dollar) }}</p>
+    <p>Price per gram of protein: ${{ "%0.2f" | format(protein_per_dollar) }}</p>
+{% endif %}
+
+{% endblock %}

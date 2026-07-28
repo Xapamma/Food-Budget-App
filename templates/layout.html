@@ -1,0 +1,27 @@
+<!-- Master Page Layouts -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Budget Price App</title>
+
+        <link rel="stylesheet"
+                href="{{url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/products">Products</a> |
+            <a href="/stores">Stores</a> |
+            <a href="/about">About</a>
+        </nav>
+
+        <hr>
+
+        {% block content %}
+        
+        {% endblock %}
+
+    </body>
+
+</html>
