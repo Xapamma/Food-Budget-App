@@ -1,4 +1,4 @@
-def protein_per_dollar(protein, price):
+def calculate_protein_per_dollar(protein, price):
     """
     Calculate the amount of protein per dollar spent.
 
@@ -13,7 +13,7 @@ def protein_per_dollar(protein, price):
         return None
     return protein / price
 
-def calorie_per_dollar(calories, price):
+def calculate_calorie_per_dollar(calories, price):
     """
     Calculate the amount of calories per dollar spent.
 

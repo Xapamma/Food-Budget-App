@@ -3,7 +3,10 @@ import sqlite3
 from app import products
 
 def get_connection():
-    return sqlite3.connect("database/products.db")
+    connection = sqlite3.connect("database/products.db")
+
+    connection.row_factory = sqlite3.Row  # This allows us to access columns by name
+    return connection
 
 def create_table():
     connection = get_connection()
@@ -38,7 +41,11 @@ def get_products():
     connection = get_connection()
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM products")
+    cursor.execute('''
+        SELECT * 
+        FROM products
+        ORDER BY id DESC
+    ''')
     products = cursor.fetchall()
 
     connection.close()

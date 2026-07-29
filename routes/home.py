@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from services.calculations import calculate_protein_per_dollar, calculate_calorie_per_dollar
+from database.py import add_product, get_products
 
 home_bp = Blueprint("home", __name__)
 
@@ -23,6 +24,19 @@ def home():
         protein_per_dollar = calculate_protein_per_dollar(protein, price)
         calorie_per_dollar = calculate_calorie_per_dollar(calories, price)
 
-    return render_template('index.html', protein_per_dollar=protein_per_dollar, calorie_per_dollar=calorie_per_dollar, product_name=product_name, price=price, calories=calories, protein=protein)
+        add_product(product_name, price, calories, protein)
+
+    products = get_products()
+
+    return render_template(
+                            'index.html', 
+                            protein_per_dollar=protein_per_dollar, 
+                            calorie_per_dollar=calorie_per_dollar, 
+                            product_name=product_name, 
+                            price=price, 
+                            calories=calories, 
+                            protein=protein,
+                            products=products
+                            )
 
 
