@@ -1,7 +1,5 @@
 import sqlite3
 
-from app import products
-
 def get_connection():
     connection = sqlite3.connect("database/products.db")
 
