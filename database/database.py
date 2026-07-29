@@ -49,4 +49,17 @@ def get_products():
     connection.close()
     return products
 
+def check_names():
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute('''
+        PRAGMA table_info(products);
+    ''')
+    names = cursor.fetchall()
+
+    connection.close()
+    return names
+
+create_table()
 print(get_products())
